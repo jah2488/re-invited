@@ -1,6 +1,6 @@
 import React from 'react';
 import { UIManager } from 'NativeModules';
-import { StyleSheet, ScrollView, LayoutAnimation } from 'react-native';
+import { StyleSheet, Button, ScrollView, View, LayoutAnimation } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import Section from '../components/section';
 import Header from '../components/header';
@@ -24,6 +24,7 @@ class HomeScreen extends React.Component {
   render() {
     return (
       <ScrollView>
+        <Button title="Details" onPress={() => this.props.navigation.navigate('Details')} />
         <Section style={styles.container}>
           <Section>
             <Header text="Invites" />
@@ -70,5 +71,14 @@ const styles = StyleSheet.create({
 export default createStackNavigator({
   Home: {
     screen: HomeScreen,
+  },
+  Details: {
+    screen: ({ props }) => {
+      return (
+        <View>
+          <Header text="I am the detail Page" />
+        </View>
+      );
+    },
   },
 });
